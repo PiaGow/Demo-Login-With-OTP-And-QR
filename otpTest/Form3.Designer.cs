@@ -148,6 +148,7 @@
             this.btnLogin.TabIndex = 11;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // picQRUpload
             // 
@@ -181,7 +182,7 @@
             this.btnQuickLogin.TabIndex = 17;
             this.btnQuickLogin.Text = "Đăng nhập nhanh";
             this.btnQuickLogin.UseVisualStyleBackColor = true;
-            this.btnQuickLogin.Click += new System.EventHandler(this.button2_Click);
+            this.btnQuickLogin.Click += new System.EventHandler(this.btnQuickLogin_Click);
             // 
             // panel1
             // 
@@ -196,7 +197,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtMailUser);
-            this.panel1.Font = new System.Drawing.Font("Sans Serif Collection", 7.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(21, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(435, 529);

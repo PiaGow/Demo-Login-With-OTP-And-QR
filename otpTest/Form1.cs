@@ -148,6 +148,7 @@ namespace otpTest
                 if ((DateTime.Now - Convert.ToDateTime(date)).TotalSeconds > 60)
                 {
                     MessageBox.Show("Mã OTP đã hết hiệu lực", "Thông báo");
+                    t = 0;
                 }
                 else
                 {
@@ -165,7 +166,9 @@ namespace otpTest
             }
             else
             {
-                MessageBox.Show("Bạn đã nhập sai quá 3 lần", "Thông báo");
+                MessageBox.Show("Bạn đã nhập sai quá 3 lần. Mã OTP hiện tại hết hiệu lực.", "Thông báo");
+                t = 0;
+                otp= 0;
             }
 
         }

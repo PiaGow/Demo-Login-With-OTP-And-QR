@@ -11,32 +11,26 @@ using ZXing.Common;
 using ZXing.QrCode.Internal;
 using ZXing.Rendering;
 using ZXing;
+using otpTest.Models;
 
 namespace otpTest
 {
     public partial class FormIn4 : Form
     {
+        DataAccountContext account = new DataAccountContext();
+
+        private string uid;
+        public string GetUid
+        {
+            get { return uid; }
+            set { uid = value; }
+        }
         public FormIn4()
         {
             InitializeComponent();
-            labName.Text= "Wiubu Baiza"; //Thay dữ liệu Name từ database
-            txtName.Text= "Wibu Baiza"; 
-            txtEmail.Text= "Mail";//Thay dữ liệu từ database
-
-            BarcodeWriter barcodeWriter = new BarcodeWriter();
-            EncodingOptions encodingOptions = new EncodingOptions() { Width = 253, Height = 250, Margin = 0, PureBarcode = false };
-            encodingOptions.Hints.Add(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
-            barcodeWriter.Renderer = new BitmapRenderer();
-            barcodeWriter.Options = encodingOptions;
-            barcodeWriter.Format = BarcodeFormat.QR_CODE;
-            Bitmap bitmap = barcodeWriter.Write("2World Xin Chào!");//Thay dữ liệu từ gmail + UID bên SQL sang
-            Bitmap logo = new Bitmap($"{Application.StartupPath}/logo.png");
-            Bitmap resize_logo = new Bitmap(logo, new Size(100, 100));
-            Graphics g = Graphics.FromImage(bitmap);
-            g.DrawImage(resize_logo, new Point((bitmap.Width - (resize_logo.Width)) / 2, (bitmap.Height - (resize_logo.Height)) / 2));
-            picUserQR.Image = bitmap;
         }
 
+        
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var image = picUserQR.Image;
@@ -57,6 +51,34 @@ namespace otpTest
             this.Hide();
             frm3.ShowDialog();
             this.Close();
+        }
+
+        private void FormIn4_Load(object sender, EventArgs e)
+        {
+            
+
+            List<DataAccount> listaccounts = account.DataAccounts.ToList();
+
+            DataAccount dt = listaccounts.FirstOrDefault(p => p.UID.ToString() == uid);//Tìm người dùng theo uid
+
+            
+            labName.Text= dt.TenNguoiDung.ToString(); 
+            
+            txtName.Text = dt.TenNguoiDung.ToString();
+            txtEmail.Text = dt.Email.ToString();
+
+            BarcodeWriter barcodeWriter = new BarcodeWriter();
+            EncodingOptions encodingOptions = new EncodingOptions() { Width = 253, Height = 250, Margin = 0, PureBarcode = false };
+            encodingOptions.Hints.Add(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+            barcodeWriter.Renderer = new BitmapRenderer();
+            barcodeWriter.Options = encodingOptions;
+            barcodeWriter.Format = BarcodeFormat.QR_CODE;
+            Bitmap bitmap = barcodeWriter.Write(uid.ToString());//Lấy dữ liệu  = UID bên SQL sang
+            Bitmap logo = new Bitmap($"{Application.StartupPath}/logo.png");
+            Bitmap resize_logo = new Bitmap(logo, new Size(100, 100));
+            Graphics g = Graphics.FromImage(bitmap);
+            g.DrawImage(resize_logo, new Point((bitmap.Width - (resize_logo.Width)) / 2, (bitmap.Height - (resize_logo.Height)) / 2));
+            picUserQR.Image = bitmap;
         }
     }
 }

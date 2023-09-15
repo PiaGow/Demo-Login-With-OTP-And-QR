@@ -37,13 +37,13 @@
             this.txtBio = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.picUserQR = new System.Windows.Forms.PictureBox();
             this.linkUploadQR = new System.Windows.Forms.LinkLabel();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUserQR)).BeginInit();
@@ -135,6 +135,26 @@
             this.panel1.Size = new System.Drawing.Size(409, 550);
             this.panel1.TabIndex = 10;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(252, 482);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(126, 42);
+            this.btnLogout.TabIndex = 12;
+            this.btnLogout.Text = "Đăng xuất";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(24, 482);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnEdit.Size = new System.Drawing.Size(126, 42);
+            this.btnEdit.TabIndex = 11;
+            this.btnEdit.Text = "Chỉnh sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -186,26 +206,6 @@
             this.linkUploadQR.Text = "Tải mã QR!";
             this.linkUploadQR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(24, 482);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnEdit.Size = new System.Drawing.Size(126, 42);
-            this.btnEdit.TabIndex = 11;
-            this.btnEdit.Text = "Chỉnh sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(252, 482);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(126, 42);
-            this.btnLogout.TabIndex = 12;
-            this.btnLogout.Text = "Đăng xuất";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.button2_Click);
-            // 
             // FormIn4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -219,6 +219,7 @@
             this.Controls.Add(this.label4);
             this.Name = "FormIn4";
             this.Text = "Thông tin tài khoản";
+            this.Load += new System.EventHandler(this.FormIn4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
