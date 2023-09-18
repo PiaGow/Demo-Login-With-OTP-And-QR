@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
 using System.Text.RegularExpressions;
+using otpTest.Models;
+using System.Security.Cryptography;
+using System.Reflection.Emit;
+using System.Reflection;
 
 namespace otpTest
 {
@@ -22,10 +26,13 @@ namespace otpTest
             InitializeComponent();
             
         }
+        private System.Windows.Forms.Timer aTimer;
+
+        DataAccountContext account = new DataAccountContext();
 
         DateTime date;
         int otp = 0;
-        
+        int atick=60;
         public int randomMaOTP()
         {
             Random random = new Random();
@@ -47,7 +54,7 @@ namespace otpTest
             SmtpServer.EnableSsl = true;
             SmtpServer.Port = 587;
             SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("phat14072009@gmail.com", "lregnmmorismzxvt");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("2worldteamsayshi@gmail.com", "qzvrfofkyjxikuzg");
 
             try
             {
@@ -61,26 +68,23 @@ namespace otpTest
 
         }
 
-        public bool VerifyEmail(string emailVerify)
-        {
+        //public bool VerifyEmail(string emailVerify)
+        //{
             
-            using (WebClient webclient = new WebClient())
-            {
-                string url = "http://verify-email.org/ ";
-                NameValueCollection formData = new NameValueCollection();
-                formData["check"] = emailVerify;
-                byte[] responseBytes = webclient.UploadValues(url, "POST", formData);
-                string response = Encoding.ASCII.GetString(responseBytes);
-                if (response.Contains("Result : OK"))
-                {
-                    return true;
-                }
-                return false;
-            }
-            
-            
-
-        }
+        //    using (WebClient webclient = new WebClient())
+        //    {
+        //        string url = "http://verify-email.org/ ";
+        //        NameValueCollection formData = new NameValueCollection();
+        //        formData["check"] = emailVerify;
+        //        byte[] responseBytes = webclient.UploadValues(url, "POST", formData);
+        //        string response = Encoding.ASCII.GetString(responseBytes);
+        //        if (response.Contains("Result : OK"))
+        //        {
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //}
         public static bool IsValidEmail(string inputEmail)
         {
             inputEmail = inputEmail ?? string.Empty;
@@ -91,42 +95,75 @@ namespace otpTest
             if (re.IsMatch(inputEmail))
                 return (true);
             else
+            {
+               
                 return (false);
+            }    
+                
         }
         private bool checkMail(string chkmail)
         {
-            
-            if (IsValidEmail(chkmail))
-                if (VerifyEmail(chkmail))
-                    return true;
-                else
-                {
+            List<DataAccount> listaccounts = account.DataAccounts.ToList();
 
-                    MessageBox.Show("Mail không tồn tại");
+            DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == chkmail);
+
+           
+                //if (VerifyEmail(chkmail))
+                //    return true;
+                if(dt!=null)
+                {
+                    return true;
+                }
+                else
+                { 
+                    
                     return false;
                 }
-            else
-            {
-                
-                return false;
-            }
-            
+           
         }
 
         private void btnGuiMaOTP_Click(object sender, EventArgs e)
         {
             if (txtMail.Text.Contains("@") && !txtMail.Text.EndsWith(".") && IsValidEmail(txtMail.Text))
             {
-                otp = randomMaOTP();
-                date = DateTime.Now;
-                GuiMaOTP("phat14072009@gmail.com", txtMail.Text.Trim(), otp);
-
+                if (checkMail(txtMail.Text) )
+                {
+                    otp = randomMaOTP();
+                    date = DateTime.Now;
+                    aTimer = new System.Windows.Forms.Timer(); //Khởi tạo đối tượng Timer mới
+                    lblTimer.Show();//hiển thi lbl chứa thời gian
+                    btnSendOTP.Enabled = false;//tắt chức năng của nút gửi mã OTP
+                    aTimer.Tick += new EventHandler(aTimer_Tick); //Tạo sự kiện aTimer_Tick
+                    aTimer.Interval = 1000; // thời gian ngắt quãng của Timer là 1 giây
+                    aTimer.Start(); //Bắt đầu khởi động Timer
+                    lblTimer.Text = atick.ToString(); //Hiển thị biến counter ra Label1
+                    GuiMaOTP("2worldteamsayshi@gmail.com", txtMail.Text.Trim(), otp);
+                }
+                else
+                {
+                    MessageBox.Show("Mail không tồn tại trong hệ thống");
+                }
                 
             }
             else
             {
                 MessageBox.Show("Vui lòng nhập đúng định dạng mail");
             }
+        }
+
+        private void aTimer_Tick(object sender, EventArgs e)
+
+        {
+
+            atick--;
+            if (atick == 0)
+            {
+                btnSendOTP.Enabled = true;
+                aTimer.Stop();
+            }
+
+            lblTimer.Text = atick.ToString()+"s";
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -149,13 +186,22 @@ namespace otpTest
                 {
                     MessageBox.Show("Mã OTP đã hết hiệu lực", "Thông báo");
                     t = 0;
+                    atick = 60;
                 }
                 else
                 {
                     if (int.Parse(txtOTP.Text) == otp)
                     {
-                        MessageBox.Show("Xác nhận thành công", "Thông báo");
+                        List<DataAccount> listaccounts = account.DataAccounts.ToList();
 
+                        DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == txtMail.Text);
+
+                        MessageBox.Show("Xác nhận thành công", "Thông báo");
+                        FormIn4 frm = new FormIn4();
+                        frm.GetUid = dt.UID.Trim();
+                        this.Hide();
+                        frm.ShowDialog();
+                        this.Close();
                     }
                     else
                     {
@@ -169,7 +215,14 @@ namespace otpTest
                 MessageBox.Show("Bạn đã nhập sai quá 3 lần. Mã OTP hiện tại hết hiệu lực.", "Thông báo");
                 t = 0;
                 otp= 0;
+                atick = 60;
             }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lblTimer.Hide();
 
         }
     }

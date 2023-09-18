@@ -116,7 +116,6 @@
             this.lab4.Size = new System.Drawing.Size(255, 37);
             this.lab4.TabIndex = 8;
             this.lab4.Text = "Chào mừng trở lại!";
-            this.lab4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -216,7 +215,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormLogin";
             this.Text = "Login";
-            this.SizeChanged += new System.EventHandler(this.FormLogin_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.picQRUpload)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -35,6 +35,7 @@
             this.lblNhapMaXacNhan = new System.Windows.Forms.Label();
             this.txtOTP = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSendOTP
@@ -127,12 +128,24 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.BackColor = System.Drawing.Color.FloralWhite;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(552, 208);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(71, 29);
+            this.lblTimer.TabIndex = 11;
+            this.lblTimer.Text = "times";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Olive;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.lblNhapMaXacNhan);
             this.Controls.Add(this.txtOTP);
@@ -141,6 +154,7 @@
             this.Controls.Add(this.txtMail);
             this.Controls.Add(this.btnSendOTP);
             this.Name = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +169,7 @@
         private System.Windows.Forms.Label lblNhapMaXacNhan;
         private System.Windows.Forms.TextBox txtOTP;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Label lblTimer;
     }
 }
 
