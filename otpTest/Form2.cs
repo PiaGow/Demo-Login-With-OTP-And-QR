@@ -30,28 +30,8 @@ namespace otpTest
             InitializeComponent();
         }
 
-        
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var image = picUserQR.Image;
 
-            // Mở hộp thoại lưu tệp
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Image files (*.png, *.jpg, *.bmp)|*.png;*.jpg;*.bmp";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Lưu hình ảnh
-                image.Save(saveFileDialog.FileName);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FormLogin frm3 = new FormLogin();
-            this.Hide();
-            frm3.ShowDialog();
-            this.Close();
-        }
+       
 
         private void FormIn4_Load(object sender, EventArgs e)
         {
@@ -79,6 +59,34 @@ namespace otpTest
             Graphics g = Graphics.FromImage(bitmap);
             g.DrawImage(resize_logo, new Point((bitmap.Width - (resize_logo.Width)) / 2, (bitmap.Height - (resize_logo.Height)) / 2));
             picUserQR.Image = bitmap;
+        }
+
+        private void linkUploadQR_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+        }
+
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin frm3 = new FormLogin();
+            this.Hide();
+            frm3.ShowDialog();
+            this.Close();
+        }
+
+        private void linkDownLoadQR_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var image = picUserQR.Image;
+
+            // Mở hộp thoại lưu tệp
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Image files (*.png, *.jpg, *.bmp)|*.png;*.jpg;*.bmp";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Lưu hình ảnh
+                image.Save(saveFileDialog.FileName);
+            }
         }
     }
 }

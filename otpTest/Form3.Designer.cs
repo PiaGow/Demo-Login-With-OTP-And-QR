@@ -93,7 +93,7 @@
             this.linkForgetPassword.TabIndex = 5;
             this.linkForgetPassword.TabStop = true;
             this.linkForgetPassword.Text = "Quên mật khẩu?";
-            this.linkForgetPassword.Click += new System.EventHandler(this.linkLabel1_Click);
+            this.linkForgetPassword.Click += new System.EventHandler(this.linkForgetPassword_Click);
             // 
             // linkLabel2
             // 
@@ -170,7 +170,7 @@
             this.linkUpQR.TabIndex = 15;
             this.linkUpQR.TabStop = true;
             this.linkUpQR.Text = "Tải mã QR lên";
-            this.linkUpQR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.linkUpQR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkUpQR_LinkClicked);
             // 
             // btnQuickLogin
             // 

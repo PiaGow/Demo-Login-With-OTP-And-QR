@@ -44,13 +44,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSendOTP.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendOTP.Location = new System.Drawing.Point(548, 121);
+            this.btnSendOTP.Location = new System.Drawing.Point(526, 129);
             this.btnSendOTP.Name = "btnSendOTP";
             this.btnSendOTP.Size = new System.Drawing.Size(111, 42);
             this.btnSendOTP.TabIndex = 2;
             this.btnSendOTP.Text = "Gửi mã otp";
             this.btnSendOTP.UseVisualStyleBackColor = true;
-            this.btnSendOTP.Click += new System.EventHandler(this.btnGuiMaOTP_Click);
+            this.btnSendOTP.Click += new System.EventHandler(this.btnSendOTP_Click);
             // 
             // txtMail
             // 
@@ -88,7 +88,7 @@
             this.btnReturn.TabIndex = 3;
             this.btnReturn.Text = "Quay lại";
             this.btnReturn.UseVisualStyleBackColor = true;
-            this.btnReturn.Click += new System.EventHandler(this.btnThoat_Click);
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // lblNhapMaXacNhan
             // 
@@ -126,7 +126,7 @@
             this.btnConfirm.TabIndex = 10;
             this.btnConfirm.Text = "Xác nhận";
             this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnXacNhan_Click);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // lblTimer
             // 

@@ -41,7 +41,7 @@ namespace otpTest
         }
 
 
-        public void GuiMaOTP(string nguoiGui, string nguoiNhan,int ma)
+        public void SendOTP(string nguoiGui, string nguoiNhan,int ma)
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -102,35 +102,6 @@ namespace otpTest
            
         }
 
-        private void btnGuiMaOTP_Click(object sender, EventArgs e)
-        {
-            if (txtMail.Text.Contains("@") && !txtMail.Text.EndsWith(".") && IsValidEmail(txtMail.Text))
-            {
-                if (checkMail(txtMail.Text) )
-                {
-                    otp = randomMaOTP();
-                    date = DateTime.Now;
-                    atick = 60;//khoảng thời gian mã otp hiệu lực là 60s
-                    aTimer = new System.Windows.Forms.Timer(); //Khởi tạo đối tượng Timer mới
-                    lblTimer.Show();//hiển thi lbl chứa thời gian
-                    btnSendOTP.Enabled = false;//tắt chức năng của nút gửi mã OTP
-                    aTimer.Tick += new EventHandler(aTimer_Tick); //Tạo sự kiện aTimer_Tick
-                    aTimer.Interval = 1000; // thời gian ngắt quãng của Timer là 1 giây
-                    aTimer.Start(); //Bắt đầu khởi động Timer
-                    lblTimer.Text = atick.ToString(); //Hiển thị biến counter ra Label1
-                    GuiMaOTP("2worldteamsayshi@gmail.com", txtMail.Text.Trim(), otp);
-                }
-                else
-                {
-                    MessageBox.Show("Mail không tồn tại trong hệ thống");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập đúng định dạng mail");
-            }
-        }
-
         private void aTimer_Tick(object sender, EventArgs e)// hàm đếm ngược thời gian
 
         {
@@ -145,18 +116,17 @@ namespace otpTest
             lblTimer.Text = atick.ToString()+"s";
 
         }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            FormLogin frm3 = new FormLogin();
-            this.Hide();
-            frm3.ShowDialog();
-            this.Close();
-        }
         int t = 0;//đếm số lần nhập sai otp
-        private void btnXacNhan_Click(object sender, EventArgs e)
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            if(otp == 0)//nếu người dùng chưa có mã otp
+            lblTimer.Hide();
+
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (otp == 0)//nếu người dùng chưa có mã otp
             {
                 MessageBox.Show("Vui lòng chọn gửi mã OTP", "Thông báo");
             }
@@ -189,33 +159,63 @@ namespace otpTest
                             MessageBox.Show("Bạn đã nhập sai", "Thông báo");
                             t++;
                         }
-                        
+
                     }
                     catch
                     {
                         MessageBox.Show("Bạn đã nhập sai", "Thông báo");
                         t++;
                     }
-                    
+
                 }
             }
             else//nhập sai quá 3 lần
             {
                 MessageBox.Show("Bạn đã nhập sai quá 3 lần. Mã OTP hiện tại hết hiệu lực.", "Thông báo");
                 t = 0;
-                otp= 0;
+                otp = 0;
                 atick = 0;
                 aTimer.Stop();
                 btnSendOTP.Enabled = true;
                 lblTimer.Text = "0s";
             }
-
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnReturn_Click(object sender, EventArgs e)
         {
-            lblTimer.Hide();
+            FormLogin frm3 = new FormLogin();
+            this.Hide();
+            frm3.ShowDialog();
+            this.Close();
+        }
 
+        private void btnSendOTP_Click(object sender, EventArgs e)
+        {
+            if (txtMail.Text.Contains("@") && !txtMail.Text.EndsWith(".") && IsValidEmail(txtMail.Text))
+            {
+                if (checkMail(txtMail.Text))
+                {
+                    otp = randomMaOTP();
+                    date = DateTime.Now;
+                    atick = 60;//khoảng thời gian mã otp hiệu lực là 60s
+                    aTimer = new System.Windows.Forms.Timer(); //Khởi tạo đối tượng Timer mới
+                    lblTimer.Show();//hiển thi lbl chứa thời gian
+                    btnSendOTP.Enabled = false;//tắt chức năng của nút gửi mã OTP
+                    aTimer.Tick += new EventHandler(aTimer_Tick); //Tạo sự kiện aTimer_Tick
+                    aTimer.Interval = 1000; // thời gian ngắt quãng của Timer là 1 giây
+                    aTimer.Start(); //Bắt đầu khởi động Timer
+                    lblTimer.Text = atick.ToString(); //Hiển thị biến counter ra Label1
+                    SendOTP("2worldteamsayshi@gmail.com", txtMail.Text.Trim(), otp);
+                }
+                else
+                {
+                    MessageBox.Show("Mail không tồn tại trong hệ thống");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng mail");
+            }
         }
     }
 }

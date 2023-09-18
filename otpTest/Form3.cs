@@ -31,7 +31,7 @@ namespace otpTest
         
        
 
-        private void linkLabel1_Click(object sender, EventArgs e)
+        private void linkForgetPassword_Click(object sender, EventArgs e)
         {
             Form1 frm1 = new Form1();
             this.Hide();
@@ -39,7 +39,7 @@ namespace otpTest
             this.Close();
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkUpQR_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.png, *.jpg, *.bmp)|*.png;*.jpg;*.bmp";

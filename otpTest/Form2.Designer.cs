@@ -43,7 +43,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.picUserQR = new System.Windows.Forms.PictureBox();
-            this.linkUploadQR = new System.Windows.Forms.LinkLabel();
+            this.linkDownLoadQR = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUserQR)).BeginInit();
@@ -143,7 +143,7 @@
             this.btnLogout.TabIndex = 12;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.button2_Click);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnEdit
             // 
@@ -194,17 +194,17 @@
             this.picUserQR.TabIndex = 13;
             this.picUserQR.TabStop = false;
             // 
-            // linkUploadQR
+            // linkDownLoadQR
             // 
-            this.linkUploadQR.AutoSize = true;
-            this.linkUploadQR.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkUploadQR.Location = new System.Drawing.Point(843, 442);
-            this.linkUploadQR.Name = "linkUploadQR";
-            this.linkUploadQR.Size = new System.Drawing.Size(113, 27);
-            this.linkUploadQR.TabIndex = 14;
-            this.linkUploadQR.TabStop = true;
-            this.linkUploadQR.Text = "Tải mã QR!";
-            this.linkUploadQR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkDownLoadQR.AutoSize = true;
+            this.linkDownLoadQR.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkDownLoadQR.Location = new System.Drawing.Point(843, 442);
+            this.linkDownLoadQR.Name = "linkDownLoadQR";
+            this.linkDownLoadQR.Size = new System.Drawing.Size(113, 27);
+            this.linkDownLoadQR.TabIndex = 14;
+            this.linkDownLoadQR.TabStop = true;
+            this.linkDownLoadQR.Text = "Tải mã QR!";
+            this.linkDownLoadQR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDownLoadQR_LinkClicked);
             // 
             // FormIn4
             // 
@@ -212,7 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Olive;
             this.ClientSize = new System.Drawing.Size(968, 574);
-            this.Controls.Add(this.linkUploadQR);
+            this.Controls.Add(this.linkDownLoadQR);
             this.Controls.Add(this.picUserQR);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
@@ -242,7 +242,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox picUserQR;
-        private System.Windows.Forms.LinkLabel linkUploadQR;
+        private System.Windows.Forms.LinkLabel linkDownLoadQR;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnEdit;
     }
