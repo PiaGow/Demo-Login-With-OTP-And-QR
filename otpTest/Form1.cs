@@ -31,12 +31,12 @@ namespace otpTest
         DataAccountContext account = new DataAccountContext();
 
         DateTime date;
-        int otp = 0;
-        int atick=60;
+        int otp = 0;//mã otp để gửi cho KH
+        int atick=60;//thời gian mã otp có hiệu lực là 60s
         public int randomMaOTP()
         {
             Random random = new Random();
-            int otp = random.Next(100000, 999999);
+            int otp = random.Next(100000, 999999);//random cho otp là số có 6 chữ số
             return otp;
         }
 
@@ -68,24 +68,7 @@ namespace otpTest
 
         }
 
-        //public bool VerifyEmail(string emailVerify)
-        //{
-            
-        //    using (WebClient webclient = new WebClient())
-        //    {
-        //        string url = "http://verify-email.org/ ";
-        //        NameValueCollection formData = new NameValueCollection();
-        //        formData["check"] = emailVerify;
-        //        byte[] responseBytes = webclient.UploadValues(url, "POST", formData);
-        //        string response = Encoding.ASCII.GetString(responseBytes);
-        //        if (response.Contains("Result : OK"))
-        //        {
-        //            return true;
-        //        }
-        //        return false;
-        //    }
-        //}
-        public static bool IsValidEmail(string inputEmail)
+        public static bool IsValidEmail(string inputEmail)//hàm kiểm tra định dạng mail
         {
             inputEmail = inputEmail ?? string.Empty;
             string strRegex = @"^([a-zA-Z0-9]+)@((\[[0-9]{1,3}" +
@@ -96,27 +79,24 @@ namespace otpTest
                 return (true);
             else
             {
-               
                 return (false);
             }    
                 
         }
+
+       
         private bool checkMail(string chkmail)
         {
             List<DataAccount> listaccounts = account.DataAccounts.ToList();
 
             DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == chkmail);
 
-           
-                //if (VerifyEmail(chkmail))
-                //    return true;
                 if(dt!=null)
                 {
                     return true;
                 }
                 else
                 { 
-                    
                     return false;
                 }
            
@@ -130,6 +110,7 @@ namespace otpTest
                 {
                     otp = randomMaOTP();
                     date = DateTime.Now;
+                    atick = 60;//khoảng thời gian mã otp hiệu lực là 60s
                     aTimer = new System.Windows.Forms.Timer(); //Khởi tạo đối tượng Timer mới
                     lblTimer.Show();//hiển thi lbl chứa thời gian
                     btnSendOTP.Enabled = false;//tắt chức năng của nút gửi mã OTP
@@ -143,7 +124,6 @@ namespace otpTest
                 {
                     MessageBox.Show("Mail không tồn tại trong hệ thống");
                 }
-                
             }
             else
             {
@@ -151,7 +131,7 @@ namespace otpTest
             }
         }
 
-        private void aTimer_Tick(object sender, EventArgs e)
+        private void aTimer_Tick(object sender, EventArgs e)// hàm đếm ngược thời gian
 
         {
 
@@ -173,49 +153,61 @@ namespace otpTest
             frm3.ShowDialog();
             this.Close();
         }
-        int t = 0;
+        int t = 0;//đếm số lần nhập sai otp
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if(otp == 0)
+            if(otp == 0)//nếu người dùng chưa có mã otp
             {
                 MessageBox.Show("Vui lòng chọn gửi mã OTP", "Thông báo");
             }
-            else if (t < 3)
+            else if (t < 3)//nếu người dùng nhập sai =<3 lần
             {
-                if ((DateTime.Now - Convert.ToDateTime(date)).TotalSeconds > 60)
+                if ((DateTime.Now - Convert.ToDateTime(date)).TotalSeconds > 60)//nếu thời gian của otp hết hiệu lực
                 {
                     MessageBox.Show("Mã OTP đã hết hiệu lực", "Thông báo");
                     t = 0;
-                    atick = 60;
                 }
                 else
                 {
-                    if (int.Parse(txtOTP.Text) == otp)
+                    try//try catch bắt sk nếu otp nhập vào ko phải là số
                     {
-                        List<DataAccount> listaccounts = account.DataAccounts.ToList();
+                        if (int.Parse(txtOTP.Text) == otp)//nếu otp nhập vào đúng otp đã gửi
+                        {
+                            List<DataAccount> listaccounts = account.DataAccounts.ToList();
 
-                        DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == txtMail.Text);
+                            DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == txtMail.Text);
 
-                        MessageBox.Show("Xác nhận thành công", "Thông báo");
-                        FormIn4 frm = new FormIn4();
-                        frm.GetUid = dt.UID.Trim();
-                        this.Hide();
-                        frm.ShowDialog();
-                        this.Close();
+                            MessageBox.Show("Xác nhận thành công", "Thông báo");
+                            FormIn4 frm = new FormIn4();
+                            frm.GetUid = dt.UID.Trim();
+                            this.Hide();
+                            frm.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bạn đã nhập sai", "Thông báo");
+                            t++;
+                        }
+                        
                     }
-                    else
+                    catch
                     {
                         MessageBox.Show("Bạn đã nhập sai", "Thông báo");
+                        t++;
                     }
-                    t++;
+                    
                 }
             }
-            else
+            else//nhập sai quá 3 lần
             {
                 MessageBox.Show("Bạn đã nhập sai quá 3 lần. Mã OTP hiện tại hết hiệu lực.", "Thông báo");
                 t = 0;
                 otp= 0;
-                atick = 60;
+                atick = 0;
+                aTimer.Stop();
+                btnSendOTP.Enabled = true;
+                lblTimer.Text = "0s";
             }
 
         }
