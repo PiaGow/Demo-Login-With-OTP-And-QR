@@ -156,7 +156,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picQRUpload.Location = new System.Drawing.Point(517, 16);
             this.picQRUpload.Name = "picQRUpload";
-            this.picQRUpload.Size = new System.Drawing.Size(389, 385);
+            this.picQRUpload.Size = new System.Drawing.Size(320, 359);
             this.picQRUpload.TabIndex = 16;
             this.picQRUpload.TabStop = false;
             // 
@@ -208,7 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Olive;
-            this.ClientSize = new System.Drawing.Size(968, 574);
+            this.ClientSize = new System.Drawing.Size(899, 548);
             this.Controls.Add(this.btnQuickLogin);
             this.Controls.Add(this.picQRUpload);
             this.Controls.Add(this.linkUpQR);

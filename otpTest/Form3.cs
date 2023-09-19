@@ -91,12 +91,12 @@ namespace otpTest
 
                     else
                     {
-                        MessageBox.Show("Mã QR không tồn tại trong hệ thống", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Người dùng không tồn tại", "Thông báo", MessageBoxButtons.OK);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng tải đúng ảnh mã qr");
+                    MessageBox.Show("Vui lòng tải đúng ảnh mã QR");
                 }
             }    
 

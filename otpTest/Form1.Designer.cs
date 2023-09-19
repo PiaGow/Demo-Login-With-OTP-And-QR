@@ -46,7 +46,7 @@
             this.btnSendOTP.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendOTP.Location = new System.Drawing.Point(526, 129);
             this.btnSendOTP.Name = "btnSendOTP";
-            this.btnSendOTP.Size = new System.Drawing.Size(111, 42);
+            this.btnSendOTP.Size = new System.Drawing.Size(109, 42);
             this.btnSendOTP.TabIndex = 2;
             this.btnSendOTP.Text = "Gửi mã otp";
             this.btnSendOTP.UseVisualStyleBackColor = true;
@@ -60,7 +60,7 @@
             this.txtMail.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMail.Location = new System.Drawing.Point(222, 129);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(253, 34);
+            this.txtMail.Size = new System.Drawing.Size(251, 34);
             this.txtMail.TabIndex = 1;
             // 
             // lblNhapMail
@@ -84,7 +84,7 @@
             this.btnReturn.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.Location = new System.Drawing.Point(473, 324);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(126, 42);
+            this.btnReturn.Size = new System.Drawing.Size(124, 42);
             this.btnReturn.TabIndex = 3;
             this.btnReturn.Text = "Quay lại";
             this.btnReturn.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             this.txtOTP.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOTP.Location = new System.Drawing.Point(222, 203);
             this.txtOTP.Name = "txtOTP";
-            this.txtOTP.Size = new System.Drawing.Size(253, 34);
+            this.txtOTP.Size = new System.Drawing.Size(251, 34);
             this.txtOTP.TabIndex = 8;
             // 
             // btnConfirm
@@ -122,7 +122,7 @@
             this.btnConfirm.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.Location = new System.Drawing.Point(207, 324);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(126, 42);
+            this.btnConfirm.Size = new System.Drawing.Size(124, 42);
             this.btnConfirm.TabIndex = 10;
             this.btnConfirm.Text = "Xác nhận";
             this.btnConfirm.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Olive;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(798, 450);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.lblNhapMaXacNhan);
