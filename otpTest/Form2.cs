@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 using ZXing.Common;
 using ZXing.QrCode.Internal;
 using ZXing.Rendering;
-using ZXing;
-using otpTest.Models;
 
 namespace otpTest
 {
     public partial class FormIn4 : Form
     {
-        DataAccountContext account = new DataAccountContext();
+        Model1 account = new Model1();
 
         private string uid;
         public string GetUid
@@ -30,7 +25,7 @@ namespace otpTest
             InitializeComponent();
         }
 
-        
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var image = picUserQR.Image;
@@ -55,15 +50,15 @@ namespace otpTest
 
         private void FormIn4_Load(object sender, EventArgs e)
         {
-            
+
 
             List<DataAccount> listaccounts = account.DataAccounts.ToList();
 
-            DataAccount dt = listaccounts.FirstOrDefault(p => p.UID.ToString() == uid);//Tìm người dùng theo uid
+            DataAccount dt = listaccounts.FirstOrDefault(p => p.UID.ToString().Trim() == uid.ToString().Trim());//Tìm người dùng theo uid
 
-            
-            labName.Text= dt.TenNguoiDung.ToString(); 
-            
+
+            labName.Text = dt.TenNguoiDung.ToString();
+
             txtName.Text = dt.TenNguoiDung.ToString();
             txtEmail.Text = dt.Email.ToString();
 

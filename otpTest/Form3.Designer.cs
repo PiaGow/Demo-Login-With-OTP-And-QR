@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkForgetPassword = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.lblRegister = new System.Windows.Forms.LinkLabel();
             this.lab4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -93,18 +93,20 @@
             this.linkForgetPassword.TabIndex = 5;
             this.linkForgetPassword.TabStop = true;
             this.linkForgetPassword.Text = "Quên mật khẩu?";
+            this.linkForgetPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgetPassword_LinkClicked);
             this.linkForgetPassword.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
-            // linkLabel2
+            // lblRegister
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(241, 462);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(141, 27);
-            this.linkLabel2.TabIndex = 7;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Đăng ký ngay!";
+            this.lblRegister.AutoSize = true;
+            this.lblRegister.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegister.Location = new System.Drawing.Point(241, 462);
+            this.lblRegister.Name = "lblRegister";
+            this.lblRegister.Size = new System.Drawing.Size(141, 27);
+            this.lblRegister.TabIndex = 7;
+            this.lblRegister.TabStop = true;
+            this.lblRegister.Text = "Đăng ký ngay!";
+            this.lblRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRegister_LinkClicked);
             // 
             // lab4
             // 
@@ -116,7 +118,6 @@
             this.lab4.Size = new System.Drawing.Size(255, 37);
             this.lab4.TabIndex = 8;
             this.lab4.Text = "Chào mừng trở lại!";
-            this.lab4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -190,7 +191,7 @@
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lab4);
-            this.panel1.Controls.Add(this.linkLabel2);
+            this.panel1.Controls.Add(this.lblRegister);
             this.panel1.Controls.Add(this.linkForgetPassword);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -216,7 +217,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormLogin";
             this.Text = "Login";
-            this.SizeChanged += new System.EventHandler(this.FormLogin_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.picQRUpload)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -231,7 +231,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkForgetPassword;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel lblRegister;
         private System.Windows.Forms.Label lab4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
