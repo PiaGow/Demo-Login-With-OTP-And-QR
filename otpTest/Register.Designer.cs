@@ -34,7 +34,7 @@
             this.txtMailUser = new System.Windows.Forms.TextBox();
             this.lblNhapLaiMK = new System.Windows.Forms.Label();
             this.txtNhapLaiMatKhau = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTenNguoiDung = new System.Windows.Forms.TextBox();
             this.lblTenNguoiDung = new System.Windows.Forms.Label();
             this.lblDieuKhoan = new System.Windows.Forms.Label();
             this.btnTiepTuc = new System.Windows.Forms.Button();
@@ -96,13 +96,13 @@
             this.txtNhapLaiMatKhau.Size = new System.Drawing.Size(357, 30);
             this.txtNhapLaiMatKhau.TabIndex = 10;
             // 
-            // textBox2
+            // txtTenNguoiDung
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(92, 119);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(357, 30);
-            this.textBox2.TabIndex = 12;
+            this.txtTenNguoiDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenNguoiDung.Location = new System.Drawing.Point(92, 119);
+            this.txtTenNguoiDung.Name = "txtTenNguoiDung";
+            this.txtTenNguoiDung.Size = new System.Drawing.Size(357, 30);
+            this.txtTenNguoiDung.TabIndex = 12;
             // 
             // lblTenNguoiDung
             // 
@@ -151,7 +151,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnTiepTuc);
             this.Controls.Add(this.lblDieuKhoan);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtTenNguoiDung);
             this.Controls.Add(this.lblTenNguoiDung);
             this.Controls.Add(this.txtNhapLaiMatKhau);
             this.Controls.Add(this.lblNhapLaiMK);
@@ -175,7 +175,7 @@
         private System.Windows.Forms.TextBox txtMailUser;
         private System.Windows.Forms.Label lblNhapLaiMK;
         private System.Windows.Forms.TextBox txtNhapLaiMatKhau;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTenNguoiDung;
         private System.Windows.Forms.Label lblTenNguoiDung;
         private System.Windows.Forms.Label lblDieuKhoan;
         private System.Windows.Forms.Button btnTiepTuc;

@@ -1,38 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZXing;
-using System.Drawing;
-using ZXing.Common;
-using ZXing.QrCode.Internal;
-using ZXing.Rendering;
-using ZXing.QrCode;
-using otpTest.Models;
-using System.Security.Cryptography;
 
 namespace otpTest
 {
-    
+
     public partial class FormLogin : Form
     {
         public static FormLogin instance;
         Model1 account = new Model1();
         public int check;
-        
+
         public FormLogin()
         {
             InitializeComponent();
             instance = this;
         }
-        
-        
-       
+
+
+
 
         private void linkLabel1_Click(object sender, EventArgs e)
         {
@@ -55,19 +44,19 @@ namespace otpTest
                 // Hiển thị hình ảnh trong picturebox
                 picQRUpload.Image = image;
             }
-           
+
         }
 
-        
 
-       
+
+
         private void btnQuickLogin_Click(object sender, EventArgs e)
         {
 
             var image = picQRUpload.Image;
-            if(image== null)
+            if (image == null)
             {
-                MessageBox.Show("Hãy tải ảnh QR để đăng nhập","Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Hãy tải ảnh QR để đăng nhập", "Thông báo", MessageBoxButtons.OK);
             }
             else
             {
@@ -102,16 +91,16 @@ namespace otpTest
                 {
                     MessageBox.Show("Vui lòng tải đúng ảnh mã qr");
                 }
-            }    
+            }
 
-            
+
 
 
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtMailUser.Text=="" || txtPassword.Text == "")
+            if (txtMailUser.Text == "" || txtPassword.Text == "")
             {
                 MessageBox.Show("Hãy điền đầy đủ thông tin đăng nhập", "Thông báo");
             }
@@ -126,13 +115,13 @@ namespace otpTest
                 DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == taiKhoan);//Tìm người dùng theo email
                 if (dt != null)// truy vấn xem người dùng có tồn tại trong CSDL chưa
                 {
-                    if(dt.MatKhau.Trim() == matKhau)//Kiểm tra mật khẩu của người dùng nhập vào
+                    if (dt.MatKhau.Trim() == matKhau)//Kiểm tra mật khẩu của người dùng nhập vào
                     {
-                        string uid=dt.UID.ToString(); 
-                        MessageBox.Show("Đăng nhập thành công ", "Thông báo",MessageBoxButtons.OK);
+                        string uid = dt.UID.ToString();
+                        MessageBox.Show("Đăng nhập thành công ", "Thông báo", MessageBoxButtons.OK);
                         FormIn4 frm2 = new FormIn4();
                         frm2.GetUid = uid;
-                     
+
 
 
                         this.Hide();
@@ -141,14 +130,14 @@ namespace otpTest
                     }
                     else
                     {
-                        MessageBox.Show("Bạn đã nhập sai mật khẩu", "Thông báo",MessageBoxButtons.OK);
-                    }    
+                        MessageBox.Show("Bạn đã nhập sai mật khẩu", "Thông báo", MessageBoxButtons.OK);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản không tồn tại","Thông báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Tài khoản không tồn tại", "Thông báo", MessageBoxButtons.OK);
                 }
-            }    
+            }
         }
 
         private void lblRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -162,7 +151,7 @@ namespace otpTest
 
         private void linkForgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+
         }
     }
 }

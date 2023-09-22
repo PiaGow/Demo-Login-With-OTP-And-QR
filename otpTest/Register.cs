@@ -1,13 +1,7 @@
-﻿using otpTest.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace otpTest
@@ -66,9 +60,9 @@ namespace otpTest
         private void btnTiepTuc_Click(object sender, EventArgs e)
         {
             FormLogin.instance.check = -1;
-            if (txtMailUser.Text != string.Empty && txtPassword.Text != string.Empty && txtNhapLaiMatKhau.Text != string.Empty && textBox2.Text !=string.Empty)
+            if (txtMailUser.Text != string.Empty && txtPassword.Text != string.Empty && txtNhapLaiMatKhau.Text != string.Empty && txtTenNguoiDung.Text != string.Empty)
             {
-                if (txtPassword.Text == txtNhapLaiMatKhau.Text && IsValidEmail(txtMailUser.Text ) && txtMailUser.Text.Contains("@") && !txtMailUser.Text.EndsWith(".") )
+                if (txtPassword.Text == txtNhapLaiMatKhau.Text && IsValidEmail(txtMailUser.Text) && txtMailUser.Text.Contains("@") && !txtMailUser.Text.EndsWith("."))
                 {
                     if (!checkMail(txtMailUser.Text))
                     {
@@ -76,7 +70,8 @@ namespace otpTest
                         this.Close();
                         this.Hide();
                         Form1 frm1 = new Form1();
-                       
+                        frm1.Mk=txtPassword.Text;
+                        frm1.Ten=txtTenNguoiDung.Text;
                         frm1.ShowDialog();
                         frm1.Show();
 
@@ -89,7 +84,7 @@ namespace otpTest
             }
             else
                 MessageBox.Show("Vui long nhap day du thong tin");
-            
+
         }
     }
 }
