@@ -32,7 +32,7 @@ namespace otpTest
         }
         private System.Windows.Forms.Timer aTimer;
 
-        DataAccountContext account = new DataAccountContext();
+        Model1 account = new Model1();
 
         DateTime date;
         int otp = 0;
@@ -215,17 +215,17 @@ namespace otpTest
                     if (int.Parse(txtOTP.Text) == otp)
                     {
                         List<DataAccount> listaccounts = account.DataAccounts.ToList();
-                        DataAccount acc = new DataAccount();
-                        acc.UID = randomMaOTP().ToString();
-                        acc.Email =txtMail.Text;
-                        acc.TenNguoiDung = ten;
-                        acc.MatKhau = mk;
-                        listaccounts.Add(acc);
-                        DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == txtMail.Text);
+                        //DataAccount acc = new DataAccount();
+                        //acc.UID = randomMaOTP().ToString();
+                        //acc.Email = txtMail.Text;
+                        //acc.TenNguoiDung = ten;
+                        //acc.MatKhau = mk;
+                        //listaccounts.Add(acc);
+                        DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == txtMail.Text.ToString());
 
                         MessageBox.Show("Xác nhận thành công", "Thông báo");
                         FormIn4 frm = new FormIn4();
-                        frm.GetUid = dt.UID.Trim();
+                        frm.GetUid = dt.UID.ToString().Trim();
                         this.Hide();
                         frm.ShowDialog();
                         this.Close();

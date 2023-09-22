@@ -21,7 +21,7 @@ namespace otpTest
             InitializeComponent();
             instance = this;
         }
-        DataAccountContext account = new DataAccountContext();
+        Model1 account = new Model1();
 
         private void Register_Load(object sender, EventArgs e)
         {
@@ -68,7 +68,7 @@ namespace otpTest
             FormLogin.instance.check = -1;
             if (txtMailUser.Text != string.Empty && txtPassword.Text != string.Empty && txtNhapLaiMatKhau.Text != string.Empty && textBox2.Text !=string.Empty)
             {
-                if (txtPassword.Text == txtNhapLaiMatKhau.Text && IsValidEmail(txtMailUser.Text ) && txtMailUser.Text.Equals("@") && !txtMailUser.Text.EndsWith(".") )
+                if (txtPassword.Text == txtNhapLaiMatKhau.Text && IsValidEmail(txtMailUser.Text ) && txtMailUser.Text.Contains("@") && !txtMailUser.Text.EndsWith(".") )
                 {
                     if (!checkMail(txtMailUser.Text))
                     {
@@ -76,7 +76,7 @@ namespace otpTest
                         this.Close();
                         this.Hide();
                         Form1 frm1 = new Form1();
-                        
+                       
                         frm1.ShowDialog();
                         frm1.Show();
 

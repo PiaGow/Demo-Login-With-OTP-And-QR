@@ -140,7 +140,6 @@ C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.Form1.resources
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.FormIn4.resources
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.FormLogin.resources
-C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.Form4.resources
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.Properties.Resources.resources
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.csproj.GenerateResource.cache
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.csproj.CoreCompileInputs.cache

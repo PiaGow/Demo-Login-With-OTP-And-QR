@@ -22,7 +22,7 @@ namespace otpTest
     public partial class FormLogin : Form
     {
         public static FormLogin instance;
-        DataAccountContext account = new DataAccountContext();
+        Model1 account = new Model1();
         public int check;
         
         public FormLogin()
@@ -87,7 +87,7 @@ namespace otpTest
 
                         MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK);
                         FormIn4 frm2 = new FormIn4();
-                        frm2.GetUid = dt.UID.ToString();
+                        frm2.GetUid = dt.UID.ToString().Trim();
                         this.Hide();
                         frm2.ShowDialog();
                         this.Close();
@@ -132,6 +132,7 @@ namespace otpTest
                         MessageBox.Show("Đăng nhập thành công ", "Thông báo",MessageBoxButtons.OK);
                         FormIn4 frm2 = new FormIn4();
                         frm2.GetUid = uid;
+                     
 
 
                         this.Hide();
