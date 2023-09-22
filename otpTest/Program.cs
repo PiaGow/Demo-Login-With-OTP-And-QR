@@ -1,4 +1,4 @@
-﻿using otpTest.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +27,7 @@ namespace otpTest
             Application.Run(new FormLogin());
             
         }
-        public static string fileName = "TaiKhoan.xlsx";
+     
         
         
 

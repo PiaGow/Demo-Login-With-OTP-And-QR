@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -219,8 +220,27 @@ namespace otpTest
                             acc.Email = txtMail.Text;
                             acc.TenNguoiDung = Ten;
                             acc.MatKhau = Mk;
-                            listaccounts.Add(acc);
-                            account.DataAccounts.Add(acc);
+                            
+                            string connectSring = "Data Source=DESKTOP-M1153UJ;Initial Catalog=btnhomotp;Integrated Security=True;";
+                            using (SqlConnection connection = new SqlConnection(connectSring))
+                            {
+                                connection.Open();
+
+                                string sql = "INSERT INTO DataAccount (UID, Email, MatKhau,TenNguoiDung) VALUES (@UID,@Email,@MatKhau,@TenNguoiDung)";
+                                // Thay TenBang, TenNV, Luong bằng tên bảng và các cột tương ứng
+
+                                using (SqlCommand command = new SqlCommand(sql, connection))
+                                {
+                                    command.Parameters.AddWithValue("@UID",acc.UID);
+                                    command.Parameters.AddWithValue("@Email", acc.Email);
+                                    command.Parameters.AddWithValue("@MatKhau", acc.MatKhau);
+                                    command.Parameters.AddWithValue("@TenNguoiDung", acc.TenNguoiDung);
+
+                                   
+                                    
+                                }
+                            }
+
                             MessageBox.Show("Xác nhận thành công", "Thông báo");
 
                             frm.GetUid = acc.UID.ToString();
