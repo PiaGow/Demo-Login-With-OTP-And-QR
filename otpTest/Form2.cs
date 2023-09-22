@@ -57,7 +57,7 @@ namespace otpTest
         {
             
 
-            List<DataAccount> listaccounts = account.DataAccounts.ToList();
+            List<DataAccount> listaccounts = new List<DataAccount>(new List<DataAccount>());
 
             DataAccount dt = listaccounts.FirstOrDefault(p => p.UID.ToString() == uid);//Tìm người dùng theo uid
 
