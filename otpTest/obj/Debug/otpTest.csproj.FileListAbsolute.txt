@@ -171,3 +171,4 @@ C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\bin\Debug\Microsof
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\bin\Debug\Microsoft.IdentityModel.Logging.dll
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\bin\Debug\EPPlus.xml
 C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\DELL\source\repos\Demo-Login-With-OTP-And-QR\otpTest\obj\Debug\otpTest.Register.resources

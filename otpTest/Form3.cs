@@ -18,14 +18,17 @@ using System.Security.Cryptography;
 
 namespace otpTest
 {
+    
     public partial class FormLogin : Form
     {
+        public static FormLogin instance;
         DataAccountContext account = new DataAccountContext();
-
+        public int check;
         
         public FormLogin()
         {
             InitializeComponent();
+            instance = this;
         }
         
         
@@ -33,6 +36,7 @@ namespace otpTest
 
         private void linkLabel1_Click(object sender, EventArgs e)
         {
+            check = 1;
             Form1 frm1 = new Form1();
             this.Hide();
             frm1.ShowDialog();
@@ -144,6 +148,20 @@ namespace otpTest
                     MessageBox.Show("Tài khoản không tồn tại","Thông báo", MessageBoxButtons.OK);
                 }
             }    
+        }
+
+        private void lblRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Register rg = new Register();
+            rg.ShowDialog();
+            rg.Show();
+            this.Hide();
+            this.Close();
+        }
+
+        private void linkForgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
         }
     }
 }
