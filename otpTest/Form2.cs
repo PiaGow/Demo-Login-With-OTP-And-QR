@@ -58,7 +58,7 @@ namespace otpTest
 
 
             labName.Text = dt.TenNguoiDung.ToString();
-
+            txtName.Text = dt.TenNguoiDung.ToString();
             txtName.Text = dt.TenNguoiDung.ToString();
             txtEmail.Text = dt.Email.ToString();
 

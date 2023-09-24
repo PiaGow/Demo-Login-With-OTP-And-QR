@@ -21,8 +21,17 @@ namespace otpTest
                 .IsFixedLength();
 
             modelBuilder.Entity<DataAccount>()
+                .Property(e => e.Email)
+                .IsFixedLength();
+
+            modelBuilder.Entity<DataAccount>()
                 .Property(e => e.MatKhau)
                 .IsFixedLength();
+
+            modelBuilder.Entity<DataAccount>()
+                .Property(e => e.TenNguoiDung)
+                .IsFixedLength();
+            
         }
     }
 }

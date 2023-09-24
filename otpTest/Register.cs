@@ -66,10 +66,11 @@ namespace otpTest
                 {
                     if (!checkMail(txtMailUser.Text))
                     {
-                        mail = txtMailUser.Text;
+                        
                         this.Close();
                         this.Hide();
                         Form1 frm1 = new Form1();
+                        frm1.Email = txtMailUser.Text;
                         frm1.Mk=txtPassword.Text;
                         frm1.Ten=txtTenNguoiDung.Text;
                         frm1.ShowDialog();

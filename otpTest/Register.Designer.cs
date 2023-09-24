@@ -66,8 +66,9 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(92, 281);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(358, 30);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtMailUser
@@ -76,7 +77,7 @@
             this.txtMailUser.Location = new System.Drawing.Point(92, 196);
             this.txtMailUser.Name = "txtMailUser";
             this.txtMailUser.Size = new System.Drawing.Size(358, 30);
-            this.txtMailUser.TabIndex = 5;
+            this.txtMailUser.TabIndex = 2;
             // 
             // lblNhapLaiMK
             // 
@@ -93,8 +94,9 @@
             this.txtNhapLaiMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNhapLaiMatKhau.Location = new System.Drawing.Point(92, 377);
             this.txtNhapLaiMatKhau.Name = "txtNhapLaiMatKhau";
+            this.txtNhapLaiMatKhau.PasswordChar = '*';
             this.txtNhapLaiMatKhau.Size = new System.Drawing.Size(357, 30);
-            this.txtNhapLaiMatKhau.TabIndex = 10;
+            this.txtNhapLaiMatKhau.TabIndex = 4;
             // 
             // txtTenNguoiDung
             // 
@@ -102,7 +104,7 @@
             this.txtTenNguoiDung.Location = new System.Drawing.Point(92, 119);
             this.txtTenNguoiDung.Name = "txtTenNguoiDung";
             this.txtTenNguoiDung.Size = new System.Drawing.Size(357, 30);
-            this.txtTenNguoiDung.TabIndex = 12;
+            this.txtTenNguoiDung.TabIndex = 1;
             // 
             // lblTenNguoiDung
             // 
@@ -128,7 +130,7 @@
             this.btnTiepTuc.Location = new System.Drawing.Point(179, 430);
             this.btnTiepTuc.Name = "btnTiepTuc";
             this.btnTiepTuc.Size = new System.Drawing.Size(182, 46);
-            this.btnTiepTuc.TabIndex = 14;
+            this.btnTiepTuc.TabIndex = 5;
             this.btnTiepTuc.Text = "Tiếp tục";
             this.btnTiepTuc.UseVisualStyleBackColor = true;
             this.btnTiepTuc.Click += new System.EventHandler(this.btnTiepTuc_Click);

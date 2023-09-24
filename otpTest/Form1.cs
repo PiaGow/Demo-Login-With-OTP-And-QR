@@ -14,8 +14,10 @@ namespace otpTest
         public static Form1 instance;
         private string mk;
         private string ten;
+        private string email;
         public string Mk { get => mk; set => mk = value; }
         public string Ten { get => ten; set => ten = value; }
+        public string Email { get => email; set => email = value; }
         public Form1()
         {
             InitializeComponent();
@@ -135,7 +137,7 @@ namespace otpTest
                         aTimer.Interval = 1000; // thời gian ngắt quãng của Timer là 1 giây
                         aTimer.Start(); //Bắt đầu khởi động Timer
                         lblTimer.Text = atick.ToString(); //Hiển thị biến counter ra Label1
-                        GuiMaOTP("2worldteamsayshi@gmail.com", txtMail.Text.Trim(), otp);
+                        GuiMaOTP("2worldteamsayshi@gmail.com", email, otp);
                     }
                     else
                     {
@@ -160,7 +162,7 @@ namespace otpTest
                 aTimer.Interval = 1000; // thời gian ngắt quãng của Timer là 1 giây
                 aTimer.Start(); //Bắt đầu khởi động Timer
                 lblTimer.Text = atick.ToString(); //Hiển thị biến counter ra Label1
-                GuiMaOTP("2worldteamsayshi@gmail.com", Register.instance.mail.Trim(), otp);
+                GuiMaOTP("2worldteamsayshi@gmail.com", email, otp);
             }
         }
 
@@ -208,38 +210,22 @@ namespace otpTest
                 {
                     if (int.Parse(txtOTP.Text) == otp)
                     {
-                        List<DataAccount> listaccounts = account.DataAccounts.ToList();
+                        //List<DataAccount> listaccounts = account.DataAccounts.ToList();
 
-                        DataAccount dt = listaccounts.FirstOrDefault(p => p.Email == txtMail.Text.ToString());
+                        DataAccount dt = account.DataAccounts.FirstOrDefault(p => p.Email == email.ToString());
 
                         FormIn4 frm = new FormIn4();
                         if (dt == null)
                         {
-                            DataAccount acc = new DataAccount();
-                            acc.UID = (int.Parse(listaccounts.Count.ToString()) + 1).ToString();
-                            acc.Email = txtMail.Text;
-                            acc.TenNguoiDung = Ten;
-                            acc.MatKhau = Mk;
-                            
-                            string connectSring = "Data Source=DESKTOP-M1153UJ;Initial Catalog=btnhomotp;Integrated Security=True;";
-                            using (SqlConnection connection = new SqlConnection(connectSring))
+                            DataAccount acc = new DataAccount()
                             {
-                                connection.Open();
-
-                                string sql = "INSERT INTO DataAccount (UID, Email, MatKhau,TenNguoiDung) VALUES (@UID,@Email,@MatKhau,@TenNguoiDung)";
-                                // Thay TenBang, TenNV, Luong bằng tên bảng và các cột tương ứng
-
-                                using (SqlCommand command = new SqlCommand(sql, connection))
-                                {
-                                    command.Parameters.AddWithValue("@UID",acc.UID);
-                                    command.Parameters.AddWithValue("@Email", acc.Email);
-                                    command.Parameters.AddWithValue("@MatKhau", acc.MatKhau);
-                                    command.Parameters.AddWithValue("@TenNguoiDung", acc.TenNguoiDung);
-
-                                   
-                                    
-                                }
-                            }
+                                UID = (account.DataAccounts.Count() + 1).ToString(),
+                                Email =email,
+                                MatKhau = (int.Parse(mk.ToString()) ).ToString(),
+                                TenNguoiDung = ten
+                            };
+                            account.DataAccounts.Add(acc);
+                            account.SaveChanges();
 
                             MessageBox.Show("Xác nhận thành công", "Thông báo");
 
